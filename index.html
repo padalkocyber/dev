@@ -46,6 +46,25 @@
         animation: blink 0.2s steps(2, start) infinite, shift 0.5s linear infinite;
       }
 
+      .evil-emoji {
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: clamp(3rem, 8vw, 6rem);
+        filter: drop-shadow(0 0 8px #000) drop-shadow(0 0 16px #ff0000);
+        animation: laughPulse 0.45s ease-in-out infinite alternate;
+        user-select: none;
+        pointer-events: none;
+      }
+
+      .evil-emoji.left {
+        left: 1.5rem;
+      }
+
+      .evil-emoji.right {
+        right: 1.5rem;
+      }
+
       @keyframes blink {
         0% {
           opacity: 1;
@@ -84,9 +103,20 @@
           background-position: 0% 50%;
         }
       }
+
+      @keyframes laughPulse {
+        0% {
+          transform: translateY(-50%) scale(1) rotate(-6deg);
+        }
+        100% {
+          transform: translateY(-50%) scale(1.18) rotate(6deg);
+        }
+      }
     </style>
   </head>
   <body>
+    <span class="evil-emoji left" aria-hidden="true">😈😂</span>
     <h1>ПАДАЛКО ЛУЧШИЙ</h1>
+    <span class="evil-emoji right" aria-hidden="true">😂😈</span>
   </body>
 </html>
