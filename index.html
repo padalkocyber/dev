@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ПАДАЛКО ЛУЧШИЙ</title>
+    <style>
+      :root {
+        --bg1: #1aff00;
+        --bg2: #ff00d4;
+        --bg3: #00f0ff;
+        --txt1: #ffff00;
+        --txt2: #ff2200;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: "Arial Black", Impact, sans-serif;
+        background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+        background-size: 300% 300%;
+        animation: acidBackground 1.5s linear infinite;
+        overflow: hidden;
+      }
+
+      h1 {
+        margin: 0;
+        padding: 2rem 2.5rem;
+        border: 0.5rem dashed #ffffff;
+        border-radius: 1rem;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: clamp(2rem, 10vw, 8rem);
+        letter-spacing: 0.2em;
+        color: var(--txt1);
+        text-shadow:
+          0 0 8px #000,
+          0 0 16px #ff00ff,
+          0 0 24px #00ffff;
+        animation: blink 0.2s steps(2, start) infinite, shift 0.5s linear infinite;
+      }
+
+      @keyframes blink {
+        0% {
+          opacity: 1;
+          color: var(--txt1);
+          transform: scale(1) rotate(-1deg);
+        }
+        50% {
+          opacity: 0.1;
+          color: var(--txt2);
+          transform: scale(1.08) rotate(1deg);
+        }
+        100% {
+          opacity: 1;
+          color: #ffffff;
+          transform: scale(1) rotate(-1deg);
+        }
+      }
+
+      @keyframes shift {
+        0% {
+          filter: hue-rotate(0deg) saturate(1.2);
+        }
+        100% {
+          filter: hue-rotate(360deg) saturate(2);
+        }
+      }
+
+      @keyframes acidBackground {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>ПАДАЛКО ЛУЧШИЙ</h1>
+  </body>
+</html>
