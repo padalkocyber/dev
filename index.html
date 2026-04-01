@@ -1,663 +1,559 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>ПАДАЛКО ЛУЧШИЙ — МЕГА-УЛЁТНЫЙ ФАН</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      user-select: none; /* чтобы не выделялся текст при кликах */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Мамаход Владимир | Экскурсии и досуг для мам с колясками</title>
+    <!-- Font Awesome 6 (free) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      min-height: 100vh;
-      background: radial-gradient(circle at 20% 30%, #0a0f1e, #03050b);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Segoe UI', 'Arial Black', 'Impact', system-ui, sans-serif;
-      overflow: hidden;
-      position: relative;
-      cursor: crosshair;
-    }
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background-color: #fff9f5;
+            color: #2d2a2a;
+            line-height: 1.4;
+        }
 
-    /* главный контейнер с динамическими эффектами */
-    .hero {
-      position: relative;
-      z-index: 20;
-      text-align: center;
-      animation: floatGlow 2s ease-in-out infinite alternate;
-      transform-origin: center;
-    }
+        /* Контейнеры */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-    /* основной титул с безумной анимацией */
-    .glitch-title {
-      font-size: clamp(2.8rem, 14vw, 9rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      background: linear-gradient(135deg, #ffff00, #ff00cc, #00ffff, #ffaa00);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: gradientShift 1.2s infinite, textPulse 0.3s infinite alternate;
-      text-shadow: 0 0 5px #ff00ff, 0 0 15px cyan, 0 0 25px yellow;
-      position: relative;
-      display: inline-block;
-      white-space: nowrap;
-      transition: all 0.2s;
-    }
+        /* Шапка */
+        .header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+            background: rgba(255,255,245,0.96);
+        }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .logo {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #d44c2f, #f09b42);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .logo span {
+            font-size: 1rem;
+            background: none;
+            color: #d44c2f;
+            font-weight: 400;
+        }
+        .menu {
+            display: flex;
+            gap: 28px;
+            font-weight: 500;
+        }
+        .menu a {
+            text-decoration: none;
+            color: #4a3b2c;
+            transition: 0.2s;
+            font-size: 1rem;
+        }
+        .menu a:hover {
+            color: #d44c2f;
+        }
+        .city-badge {
+            background: #f0e7db;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .city-badge i {
+            margin-right: 6px;
+            color: #d44c2f;
+        }
 
-    /* эффект глитча (псевдоэлементы) */
-    .glitch-title::before,
-    .glitch-title::after {
-      content: "ПАДАЛКО ЛУЧШИЙ";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #ffff00, #ff00cc, #00ffff);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      opacity: 0.7;
-      pointer-events: none;
-    }
+        /* Герой */
+        .hero {
+            background: linear-gradient(97deg, #fcecd8 0%, #fff2e6 100%);
+            border-radius: 0 0 48px 48px;
+            padding: 48px 0 64px;
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+        .hero-text {
+            flex: 1.2;
+        }
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #2d2418;
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #5a4a38;
+            margin-bottom: 32px;
+        }
+        .hero-btn {
+            background: #d44c2f;
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 6px 14px rgba(212,76,47,0.3);
+        }
+        .hero-btn:hover {
+            background: #b33d24;
+            transform: scale(1.02);
+        }
+        .hero-stats {
+            flex: 0.9;
+            background: rgba(255,255,245,0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 32px;
+            padding: 28px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .stat-item {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .stat-item i {
+            font-size: 1.8rem;
+            color: #d44c2f;
+            width: 40px;
+        }
 
-    .glitch-title::before {
-      animation: glitchAnim 0.18s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
-      z-index: -1;
-      left: 4px;
-      text-shadow: -2px 0 red;
-    }
+        /* категории */
+        .categories {
+            padding: 64px 0;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #2d2418;
+        }
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 32px;
+            padding: 32px 24px;
+            flex: 1;
+            min-width: 220px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            transition: 0.25s ease;
+            text-align: center;
+            border: 1px solid #f5e6da;
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.08);
+        }
+        .card i {
+            font-size: 2.8rem;
+            color: #d44c2f;
+            margin-bottom: 16px;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+        .card p {
+            color: #6b5a48;
+        }
 
-    .glitch-title::after {
-      animation: glitchAnim2 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) reverse infinite;
-      z-index: -2;
-      left: -4px;
-      text-shadow: 2px 0 cyan;
-    }
+        /* Ближайшие события (Владимир) */
+        .events {
+            background: #fef6ef;
+            padding: 64px 0;
+        }
+        .event-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 28px;
+            justify-content: center;
+        }
+        .event-item {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            width: 320px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.2s;
+        }
+        .event-img {
+            background: #e3d9cf;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #b34e2e;
+        }
+        .event-info {
+            padding: 20px;
+        }
+        .event-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+        .event-date {
+            color: #d44c2f;
+            font-weight: 600;
+            margin: 8px 0;
+        }
+        .event-desc {
+            color: #5f4e3a;
+            margin: 12px 0;
+        }
+        .event-tag {
+            display: inline-block;
+            background: #f0e2d6;
+            border-radius: 40px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+        }
 
-    /* неоновая рамка + пульсация */
-    .neon-border {
-      display: inline-block;
-      padding: 0.5rem 2rem;
-      border-radius: 80px;
-      background: rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(4px);
-      box-shadow: 0 0 15px #ff00cc, 0 0 30px #00ffff, inset 0 0 20px rgba(255, 255, 0, 0.5);
-      animation: borderPulse 0.8s infinite alternate;
-      transition: transform 0.2s;
-    }
+        /* Преимущества */
+        .benefits {
+            padding: 64px 0;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+        .benefit {
+            text-align: center;
+            padding: 24px;
+        }
+        .benefit i {
+            font-size: 2.5rem;
+            background: #f4e8de;
+            padding: 16px;
+            border-radius: 60px;
+            color: #d44c2f;
+            margin-bottom: 20px;
+        }
 
-    /* доп текст-подпись */
-    .tagline {
-      margin-top: 2rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      letter-spacing: 4px;
-      background: rgba(0, 0, 0, 0.6);
-      display: inline-block;
-      padding: 0.5rem 1.8rem;
-      border-radius: 60px;
-      backdrop-filter: blur(10px);
-      color: #fff9c4;
-      text-shadow: 0 0 8px magenta, 0 0 5px cyan;
-      font-family: monospace;
-      animation: flicker 1.2s infinite;
-      border: 1px solid rgba(255, 255, 0, 0.6);
-    }
+        /* Карта для прогулок (локации Владимира) */
+        .map-section {
+            background: #f7ede3;
+            padding: 64px 0;
+            border-radius: 48px 48px 0 0;
+        }
+        .map-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        .map-places {
+            flex: 1;
+        }
+        .place {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 28px;
+            align-items: center;
+        }
+        .place i {
+            font-size: 1.8rem;
+            color: #d44c2f;
+        }
+        .map-preview {
+            flex: 1;
+            background: #ded1c2;
+            border-radius: 32px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #4d3c2b;
+            font-weight: 500;
+        }
 
-    /* кнопка-пати хардкор */
-    .party-btn {
-      margin-top: 2rem;
-      background: linear-gradient(45deg, gold, fuchsia);
-      border: none;
-      padding: 12px 28px;
-      font-size: 1.3rem;
-      font-weight: bold;
-      font-family: inherit;
-      border-radius: 60px;
-      color: #111;
-      cursor: pointer;
-      box-shadow: 0 0 15px #ffaa44, 0 0 30px hotpink;
-      transition: 0.1s linear;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      animation: btnWobble 0.5s infinite alternate;
-    }
+        /* подписка */
+        .subscribe {
+            padding: 64px 0;
+            text-align: center;
+            background: #fff;
+        }
+        .subscribe-form {
+            max-width: 550px;
+            margin: 30px auto 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+        .subscribe-form input {
+            flex: 2;
+            padding: 14px 20px;
+            border-radius: 60px;
+            border: 1px solid #e2cfbe;
+            font-size: 1rem;
+            outline: none;
+        }
+        .subscribe-form button {
+            background: #d44c2f;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
-    .party-btn:active {
-      transform: scale(0.96);
-      filter: brightness(1.2);
-    }
+        /* футер */
+        .footer {
+            background: #2d2418;
+            color: #e7daca;
+            padding: 48px 0 24px;
+            margin-top: 20px;
+        }
+        .footer a {
+            color: #f0bc9b;
+            text-decoration: none;
+        }
 
-    /* холст для частиц, конфетти, звёзд */
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      pointer-events: none;
-      z-index: 30;
-    }
-
-    /* задний шум/рябь (эффект искажения) */
-    .noise-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: repeating-radial-gradient(circle at 20% 40%, rgba(0,255,255,0.08) 0px, rgba(255,0,200,0.05) 2px, transparent 4px);
-      pointer-events: none;
-      z-index: 10;
-      mix-blend-mode: overlay;
-      animation: noiseShift 0.2s steps(3) infinite;
-    }
-
-    /* плавающие "лазерные" линии */
-    .laser-rays {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, transparent 45%, cyan 48%, magenta 52%, transparent 55%);
-      background-size: 300% 300%;
-      animation: laserMove 4s linear infinite;
-      opacity: 0.2;
-      pointer-events: none;
-      z-index: 5;
-      mix-blend-mode: screen;
-    }
-
-    /* Анимации */
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
-    }
-
-    @keyframes textPulse {
-      0% { text-shadow: 0 0 3px #ff00ff, 0 0 8px cyan; letter-spacing: 0.12em; }
-      100% { text-shadow: 0 0 20px yellow, 0 0 30px fuchsia; letter-spacing: 0.2em; }
-    }
-
-    @keyframes glitchAnim {
-      0% { transform: skew(0deg, 0deg); opacity: 0.7; }
-      20% { transform: skew(2deg, -1deg); opacity: 1; }
-      40% { transform: skew(-2deg, 1deg); opacity: 0.8; }
-      60% { transform: skew(1deg, -0.5deg); }
-      80% { transform: skew(-1deg, 0.5deg); }
-      100% { transform: skew(0deg, 0deg); }
-    }
-
-    @keyframes glitchAnim2 {
-      0% { transform: skew(0deg, 0deg); opacity: 0.6; }
-      25% { transform: skew(-2deg, 1deg); opacity: 0.9; }
-      50% { transform: skew(1deg, -1deg); }
-      75% { transform: skew(-1deg, 0.5deg); }
-      100% { transform: skew(0deg, 0deg); }
-    }
-
-    @keyframes borderPulse {
-      0% { box-shadow: 0 0 5px #ff44ff, 0 0 15px cyan, inset 0 0 8px yellow; }
-      100% { box-shadow: 0 0 25px #ff66ff, 0 0 45px #0ff, inset 0 0 20px rgb(255, 215, 0); }
-    }
-
-    @keyframes floatGlow {
-      0% { transform: translateY(0px) scale(1); filter: drop-shadow(0 0 5px magenta); }
-      100% { transform: translateY(-12px) scale(1.02); filter: drop-shadow(0 0 20px cyan); }
-    }
-
-    @keyframes flicker {
-      0%, 100% { opacity: 1; text-shadow: 0 0 2px cyan; }
-      25% { opacity: 0.9; text-shadow: 0 0 12px magenta; letter-spacing: 5px; }
-      75% { opacity: 1; text-shadow: 0 0 5px lime; }
-    }
-
-    @keyframes btnWobble {
-      0% { transform: rotate(0deg) scale(1); }
-      100% { transform: rotate(1deg) scale(1.03); background-position: 100% 0; }
-    }
-
-    @keyframes noiseShift {
-      0% { transform: translate(0, 0); opacity: 0.4; }
-      100% { transform: translate(2px, -2px); opacity: 0.7; }
-    }
-
-    @keyframes laserMove {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 100% 100%; }
-    }
-
-    /* аудио-виджет маленький */
-    .audio-badge {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: rgba(0,0,0,0.7);
-      backdrop-filter: blur(12px);
-      padding: 8px 14px;
-      border-radius: 60px;
-      font-size: 12px;
-      color: white;
-      font-family: monospace;
-      z-index: 50;
-      border: 1px solid lime;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.2s;
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .audio-badge:hover {
-      background: black;
-      border-color: fuchsia;
-      box-shadow: 0 0 12px magenta;
-    }
-
-    /* эффект при клике на титул */
-    .shake-super {
-      animation: screenShake 0.2s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
-    }
-
-    @keyframes screenShake {
-      0% { transform: translate(1px, 1px); }
-      10% { transform: translate(-2px, -2px); }
-      20% { transform: translate(2px, 0px); }
-      30% { transform: translate(-1px, 2px); }
-      40% { transform: translate(1px, -1px); }
-      50% { transform: translate(-2px, 1px); }
-      100% { transform: translate(0,0); }
-    }
-
-    /* адаптив */
-    @media (max-width: 640px) {
-      .glitch-title {
-        font-size: 2.4rem;
-        letter-spacing: 0.1em;
-        white-space: normal;
-        word-break: keep-all;
-      }
-      .neon-border {
-        padding: 0.2rem 1rem;
-      }
-      .tagline {
-        font-size: 0.8rem;
-      }
-      .party-btn {
-        font-size: 1rem;
-        padding: 8px 20px;
-      }
-    }
-
-    /* индикатор басов */
-    .bass-buddy {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #ff44cc, #2200aa);
-      filter: blur(8px);
-      opacity: 0.5;
-      z-index: 40;
-      pointer-events: none;
-      animation: bassPump 0.6s infinite alternate;
-    }
-
-    @keyframes bassPump {
-      0% { transform: scale(0.8); opacity: 0.3; background: cyan; }
-      100% { transform: scale(1.5); opacity: 0.8; background: fuchsia; }
-    }
-  </style>
+        @media (max-width: 780px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .menu {
+                gap: 16px;
+                flex-wrap: wrap;
+            }
+            .nav {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="laser-rays"></div>
-  <div class="noise-overlay"></div>
-  <div class="bass-buddy"></div>
-
-  <div class="hero">
-    <div class="neon-border">
-      <h1 class="glitch-title">ПАДАЛКО ЛУЧШИЙ</h1>
+<header class="header">
+    <div class="container">
+        <div class="nav">
+            <div class="logo">Мамаход <span>| Владимир</span></div>
+            <div class="menu">
+                <a href="#">О нас</a>
+                <a href="#">Экскурсии</a>
+                <a href="#">События</a>
+                <a href="#">Карта</a>
+                <a href="#">Отзывы</a>
+            </div>
+            <div class="city-badge"><i class="fas fa-map-marker-alt"></i> Владимир · Для мам с колясками</div>
+        </div>
     </div>
-    <div class="tagline">
-      ⚡ АБСОЛЮТНЫЙ ЧЕМПИОН ⚡
+</header>
+
+<main>
+    <!-- Герой -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>Культурный досуг и путешествия <br> с малышом во Владимире</h1>
+                <p>Дорогая, бери свою семью и отправляйся навстречу древним улицам, уютным паркам и новым открытиям с «Мамаход».</p>
+                <button class="hero-btn" id="mainCta">Выбрать прогулку →</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item"><i class="fas fa-baby-carriage"></i> <span>Маршруты с коляской 0+</span></div>
+                <div class="stat-item"><i class="fas fa-headphones"></i> <span>Радиогиды до 300 метров</span></div>
+                <div class="stat-item"><i class="fas fa-camera"></i> <span>Фото на память от организаторов</span></div>
+                <div class="stat-item"><i class="fas fa-users"></i> <span>Комьюнити осознанных мам</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Кому подходит (категории) -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">Куда отправимся вместе?</div>
+            <div class="cards">
+                <div class="card"><i class="fas fa-child"></i><h3>Для малышей</h3><p>Новые впечатления, интерактивные прогулки по паркам и музеям Владимира.</p></div>
+                <div class="card"><i class="fas fa-female"></i><h3>Для мам</h3><p>Яркий досуг, знакомства и отдых от быта. Декрет — время вдохновения.</p></div>
+                <div class="card"><i class="fas fa-home"></i><h3>Для семьи</h3><p>Туры и квесты, которые объединяют родителей и детей любого возраста.</p></div>
+                <div class="card"><i class="fas fa-futbol"></i><h3>Для пап</h3><p>Готовые сценарии выходного дня: активно, вкусно и с пользой.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ближайшие события (локализовано под Владимир) -->
+    <section class="events">
+        <div class="container">
+            <div class="section-title">✨ Ближайшие события во Владимире ✨</div>
+            <div class="event-list">
+                <div class="event-item">
+                    <div class="event-img"><i class="fas fa-landmark"></i></div>
+                    <div class="event-info">
+                        <h4>Золотые ворота и старый город</h4>
+                        <div class="event-date"><i class="far fa-calendar-alt"></i> 18 апреля, 11:00</div>
+                        <p class="event-desc">Прогулка по историческому центру с аудиогидом, остановки у Дмитриевского собора. Подходит для колясок.</p>
+                        <span class="event-tag">0+ / коляскам рады</span>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-img"><i class="fas fa-tree"></i></div>
+                    <div class="event-info">
+                        <h4>Семейный пикник в Центральном парке</h4>
+                        <div class="event-date"><i class="far fa-calendar-alt"></i> 25 апреля, 12:00</div>
+                        <p class="event-desc">Игры, мастер-класс по оригами, знакомство с мамами Владимира. Вкусный чай и пледы.</p>
+                        <span class="event-tag">для всей семьи</span>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-img"><i class="fas fa-palette"></i></div>
+                    <div class="event-info">
+                        <h4>Арт-завтрак в усадьбе Храповицкого</h4>
+                        <div class="event-date"><i class="far fa-calendar-alt"></i> 3 мая, 10:30</div>
+                        <p class="event-desc">Экскурсия по музейному комплексу + творческая встреча с художницей.</p>
+                        <span class="event-tag">фотосессия в подарок</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-title">Почему стоит быть с Мамаход</div>
+            <div class="benefits-grid">
+                <div class="benefit"><i class="fas fa-smile"></i><h3>Живите здесь и сейчас</h3><p>Не откладывайте жизнь на потом, наслаждайтесь материнством без границ.</p></div>
+                <div class="benefit"><i class="fas fa-spa"></i><h3>Время для себя</h3><p>Хобби, прогулки, общение — реализуем мечты прямо сейчас.</p></div>
+                <div class="benefit"><i class="fas fa-hiking"></i><h3>Семейные приключения</h3><p>Папы, бабушки и дедушки вместе с нами открывают Владимирский край.</p></div>
+                <div class="benefit"><i class="fas fa-globe"></i><h3>Социализация малышей</h3><p>Дети видят большой мир за пределами площадки, учатся общаться.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Карта для прогулок с детьми (локации Владимира) -->
+    <section class="map-section">
+        <div class="container map-container">
+            <div class="map-places">
+                <h3 style="font-size: 1.8rem; margin-bottom: 24px;">📍 Карта kid-friendly мест</h3>
+                <div class="place"><i class="fas fa-archway"></i><div><strong>Золотые ворота</strong><br>Пешеходная зона, удобный спуск для колясок, рядом кафе</div></div>
+                <div class="place"><i class="fas fa-tree"></i><div><strong>Центральный парк культуры и отдыха</strong><br>Асфальтированные дорожки, детские площадки, тенистые аллеи</div></div>
+                <div class="place"><i class="fas fa-museum"></i><div><strong>Музей "Палаты"</strong><br>Интерактивные экспозиции, комната матери и ребёнка, лифты</div></div>
+                <div class="place"><i class="fas fa-coffee"></i><div><strong>Кофейня "Мама, я приехал"</strong><br>Дружелюбно к детям, пеленальный столик, высокие стулья</div></div>
+                <div class="place"><i class="fas fa-water"></i><div><strong>Серебряные пруды</strong><br>Экотропа, удобно гулять с коляской, кормление уток</div></div>
+            </div>
+            <div class="map-preview">
+                <i class="fas fa-map-marked-alt" style="font-size: 3rem; margin-bottom: 12px;"></i>
+                <p>Интерактивная карта Владимира<br>с 20+ маршрутами для мам с колясками</p>
+                <button class="hero-btn" style="background: #9b5a3a; margin-top: 15px; padding: 8px 20px;">Посмотреть все места</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы мам (коротко) -->
+    <section class="benefits" style="padding-top: 20px;">
+        <div class="container">
+            <div class="section-title">💬 Что говорят мамы Владимира</div>
+            <div class="cards" style="gap: 25px;">
+                <div class="card"><i class="fas fa-star" style="color: #f4b942;"></i><p>«Спасибо за экскурсию у Золотых ворот! Коляска прошла легко, малыш спал, а я узнала столько нового о городе. Обязательно пойдём ещё!»</p><strong>— Екатерина, мама Софии</strong></div>
+                <div class="card"><i class="fas fa-star" style="color: #f4b942;"></i><p>«Впервые пошла на мастер-класс с другими мамами. Теперь у меня есть подруги в декрете! Атмосфера невероятная»</p><strong>— Анна, Владимир</strong></div>
+                <div class="card"><i class="fas fa-star" style="color: #f4b942;"></i><p>«Муж был в восторге от исторического квеста по Георгиевской улице. Ребёнок веселился, мы отлично провели выходные»</p><strong>— Мария и Андрей</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подписка и подарок -->
+    <section class="subscribe">
+        <div class="container">
+            <div class="section-title">📬 Получите гайд «11 kidfriendly мест Владимира»</div>
+            <p style="max-width: 620px; margin: 0 auto;">Подпишитесь на рассылку, и мы подарим подборку лучших локаций для прогулок с детьми во Владимире, а также промокод на первую экскурсию.</p>
+            <div class="subscribe-form">
+                <input type="email" placeholder="Ваш e-mail" id="subEmail">
+                <button id="subBtn">Получить гайд →</button>
+            </div>
+            <p style="font-size: 0.8rem; margin-top: 16px;">Никакого спама, только анонсы событий во Владимире.</p>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="nav" style="justify-content: space-between; border-bottom: 1px solid #5e4c39; padding-bottom: 28px; flex-wrap: wrap;">
+            <div class="logo" style="color:#f0bc9b; background: none; -webkit-background-clip: unset; color:#f0bc9b;">Мамаход | Владимир</div>
+            <div style="display: flex; gap: 30px;">
+                <a href="#">О проекте</a>
+                <a href="#">Стать гидом</a>
+                <a href="#">Политика</a>
+                <a href="#">Контакты</a>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 32px;">&copy; 2025 Мамаход — культурный досуг для мам с малышами во Владимире. <br> Все маршруты адаптированы для колясок и детей от 0+.</p>
     </div>
-    <button class="party-btn" id="boomButton">💥 ЗАЖГИ ТОТАЛ 💥</button>
-  </div>
+</footer>
 
-  <canvas id="canvasConfetti"></canvas>
-
-  <div id="audioControl" class="audio-badge">
-    🔊 ВКЛ МУЗЫКУ
-  </div>
-
-  <script>
-    (function() {
-      // ========== 1. КОНФЕТТИ И ЧАСТИЦЫ (продвинутая система) ==========
-      const canvas = document.getElementById('canvasConfetti');
-      const ctx = canvas.getContext('2d');
-      let width = window.innerWidth;
-      let height = window.innerHeight;
-      let particles = [];
-      let animationId = null;
-      let confettiActive = false;
-
-      function resizeCanvas() {
-        width = window.innerWidth;
-        height = window.innerHeight;
-        canvas.width = width;
-        canvas.height = height;
-      }
-      window.addEventListener('resize', resizeCanvas);
-      resizeCanvas();
-
-      class ConfettiParticle {
-        constructor(x, y, vx, vy, size, color, life, shape = 'circle') {
-          this.x = x;
-          this.y = y;
-          this.vx = vx;
-          this.vy = vy;
-          this.size = size;
-          this.color = color;
-          this.life = life;
-          this.maxLife = life;
-          this.shape = shape;
-          this.rotation = Math.random() * Math.PI * 2;
-          this.rotSpeed = (Math.random() - 0.5) * 0.2;
-        }
-        update(gravity = 0.2, drag = 0.98) {
-          this.vx *= drag;
-          this.vy += gravity;
-          this.vy *= drag;
-          this.x += this.vx;
-          this.y += this.vy;
-          this.life -= 1;
-          this.rotation += this.rotSpeed;
-          return this.life > 0 && this.y < height + 200 && this.x > -200 && this.x < width + 200;
-        }
-        draw(ctx) {
-          const opacity = Math.min(1, this.life / this.maxLife * 1.2);
-          ctx.save();
-          ctx.translate(this.x, this.y);
-          ctx.rotate(this.rotation);
-          ctx.globalAlpha = opacity;
-          ctx.fillStyle = this.color;
-          if (this.shape === 'rect') {
-            ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size * 0.7);
-          } else if (this.shape === 'star') {
-            ctx.beginPath();
-            const spikes = 5;
-            const outerR = this.size;
-            const innerR = this.size * 0.5;
-            for (let i = 0; i < spikes * 2; i++) {
-              const radius = i % 2 === 0 ? outerR : innerR;
-              const angle = (Math.PI * 2 * i) / (spikes * 2);
-              const xPos = Math.cos(angle) * radius;
-              const yPos = Math.sin(angle) * radius;
-              if (i === 0) ctx.moveTo(xPos, yPos);
-              else ctx.lineTo(xPos, yPos);
+<script>
+    // небольшие интерактивы: алерт для кнопок
+    const cta = document.getElementById('mainCta');
+    if(cta) cta.addEventListener('click', () => {
+        alert('✨ Смотреть расписание экскурсий во Владимире можно в разделе "События". Присоединяйтесь!');
+    });
+    const subBtn = document.getElementById('subBtn');
+    if(subBtn) {
+        subBtn.addEventListener('click', () => {
+            const emailInput = document.getElementById('subEmail');
+            if(emailInput.value && emailInput.value.includes('@')) {
+                alert(`Спасибо! Гайд по Владимиру отправлен на ${emailInput.value}. Ждите письмо ❤️`);
+                emailInput.value = '';
+            } else {
+                alert('Пожалуйста, введите email, чтобы получить гайд kid-friendly мест Владимира :)');
             }
-            ctx.closePath();
-            ctx.fill();
-          } else {
-            ctx.beginPath();
-            ctx.arc(0, 0, this.size * 0.8, 0, Math.PI * 2);
-            ctx.fill();
-          }
-          ctx.restore();
-        }
-      }
-
-      function burstConfetti(x, y, intensity = 1.2) {
-        const count = Math.floor(60 * intensity);
-        const colors = ['#FFD966', '#FF6B6B', '#6BCB77', '#4D96FF', '#FF6AC2', '#F9F3B0', '#C084FC', '#00FFFF', '#FF44CC', '#FFFF00'];
-        for (let i = 0; i < count; i++) {
-          const angle = Math.random() * Math.PI * 2;
-          const speed = Math.random() * 6 + 2;
-          const vx = Math.cos(angle) * speed * (Math.random() * 1.5);
-          const vy = Math.sin(angle) * speed * (Math.random() * 1.2 + 1);
-          const size = Math.random() * 9 + 4;
-          const color = colors[Math.floor(Math.random() * colors.length)];
-          const life = 100 + Math.random() * 70;
-          const shapeChoice = Math.random() > 0.6 ? (Math.random() > 0.5 ? 'star' : 'rect') : 'circle';
-          particles.push(new ConfettiParticle(x, y, vx, vy, size, color, life, shapeChoice));
-        }
-        // дополнительные случайные брызги
-        for (let i = 0; i < count * 0.6; i++) {
-          const xOff = (Math.random() - 0.5) * 300;
-          const yOff = (Math.random() - 0.5) * 200;
-          const angle2 = Math.random() * Math.PI * 2;
-          const speed2 = Math.random() * 7;
-          particles.push(new ConfettiParticle(x + xOff, y + yOff, Math.cos(angle2)*speed2, Math.sin(angle2)*speed2 - 2, Math.random()*7+3, colors[Math.floor(Math.random()*colors.length)], 80 + Math.random()*60, 'circle'));
-        }
-      }
-
-      function fullScreenFirework() {
-        for (let i = 0; i < 5; i++) {
-          setTimeout(() => {
-            const randX = Math.random() * width;
-            const randY = Math.random() * height * 0.7 + 50;
-            burstConfetti(randX, randY, 0.9);
-          }, i * 80);
-        }
-        // центральный эпичный взрыв
-        burstConfetti(width/2, height/2, 2.2);
-        burstConfetti(width/2 + 40, height/2 - 30, 1.5);
-      }
-
-      function startAnimationLoop() {
-        if (animationId) cancelAnimationFrame(animationId);
-        function drawFrame() {
-          if (!ctx) return;
-          ctx.clearRect(0, 0, width, height);
-          let activeParticles = false;
-          for (let i = particles.length-1; i >= 0; i--) {
-            const alive = particles[i].update(0.18, 0.97);
-            particles[i].draw(ctx);
-            if (alive) activeParticles = true;
-            else particles.splice(i,1);
-          }
-          if (activeParticles || confettiActive) {
-            animationId = requestAnimationFrame(drawFrame);
-          } else {
-            cancelAnimationFrame(animationId);
-            animationId = null;
-          }
-        }
-        if (animationId) cancelAnimationFrame(animationId);
-        animationId = requestAnimationFrame(drawFrame);
-      }
-
-      // триггеры конфетти
-      function megaParty() {
-        fullScreenFirework();
-        // двойной взрыв спустя 0.2
-        setTimeout(() => {
-          for(let i=0;i<3;i++) {
-            burstConfetti(width * Math.random(), height * Math.random(), 0.8);
-          }
-        }, 200);
-        // вибрация если поддерживается
-        if (navigator.vibrate) navigator.vibrate(200);
-        // добавим тряску экрана на секунду
-        document.body.classList.add('shake-super');
-        setTimeout(() => document.body.classList.remove('shake-super'), 300);
-        // дополнительная вспышка
-        const flashDiv = document.createElement('div');
-        flashDiv.style.position = 'fixed';
-        flashDiv.style.top = 0;
-        flashDiv.style.left = 0;
-        flashDiv.style.width = '100%';
-        flashDiv.style.height = '100%';
-        flashDiv.style.backgroundColor = 'white';
-        flashDiv.style.pointerEvents = 'none';
-        flashDiv.style.zIndex = 9999;
-        flashDiv.style.mixBlendMode = 'overlay';
-        flashDiv.style.opacity = '0.6';
-        document.body.appendChild(flashDiv);
-        setTimeout(() => flashDiv.remove(), 150);
-      }
-
-      // кнопка мега пати
-      const partyBtn = document.getElementById('boomButton');
-      partyBtn.addEventListener('click', () => {
-        megaParty();
-        // также запускаем постоянный "дождь" из искр на 2 секунды (дополнительно)
-        let interval = setInterval(() => {
-          if (Math.random() > 0.6) {
-            burstConfetti(Math.random() * width, Math.random() * height * 0.8 + 20, 0.5);
-          }
-        }, 180);
-        setTimeout(() => clearInterval(interval), 1500);
-      });
-
-      // клик по самому титулу тоже вызывает конфетти
-      const titleElem = document.querySelector('.glitch-title');
-      if(titleElem) {
-        titleElem.addEventListener('click', (e) => {
-          const rect = titleElem.getBoundingClientRect();
-          const centerX = rect.left + rect.width/2;
-          const centerY = rect.top + rect.height/2;
-          burstConfetti(centerX, centerY, 1.3);
-          megaParty(); // двойной эффект
         });
-      }
+    }
 
-      startAnimationLoop();
+    // карточки событий - легкий клик для демонстрации
+    const eventItems = document.querySelectorAll('.event-item');
+    eventItems.forEach((ev, idx) => {
+        ev.addEventListener('click', () => {
+            alert('🌟 Запись на событие скоро откроется! Следите за рассылкой и instagram-аккаунтом Мамаход Владимир.');
+        });
+    });
 
-      // ========== 2. ЗВУКОВАЯ ФИШКА (синтезатор веселья) ==========
-      let audioCtx = null;
-      let isAudioEnabled = false;
-      let currentOsc = null;
-      let audioBadge = document.getElementById('audioControl');
-
-      function initAudio() {
-        if (audioCtx) return;
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }
-
-      function playShortBeep(freq = 880, duration = 0.12, type = 'sine', volume = 0.2) {
-        if (!audioCtx || !isAudioEnabled) return;
-        const now = audioCtx.currentTime;
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.type = type;
-        osc.frequency.value = freq;
-        gain.gain.setValueAtTime(volume, now);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
-        osc.start();
-        osc.stop(now + duration);
-      }
-
-      function playPartyStab() {
-        if (!isAudioEnabled) return;
-        playShortBeep(523, 0.08, 'square', 0.15);
-        playShortBeep(659, 0.1, 'sawtooth', 0.12);
-        playShortBeep(784, 0.15, 'triangle', 0.1);
-        setTimeout(() => playShortBeep(1046, 0.2, 'sine', 0.08), 50);
-      }
-
-      // при клике на любую конфетти-ивенту добавляем звук (через прокси)
-      const originalBurst = burstConfetti;
-      window.burstConfetti = burstConfetti; // сохраняем
-
-      function enhancedBurst(x,y,intensity=1) {
-        originalBurst(x,y,intensity);
-        if(isAudioEnabled && audioCtx) {
-          playShortBeep(440 + Math.random() * 400, 0.07, 'sine', 0.08);
-        }
-      }
-      // переопределяем
-      window.burstConfetti = enhancedBurst;
-      burstConfetti = enhancedBurst;
-
-      audioBadge.addEventListener('click', async () => {
-        if (!audioCtx) {
-          initAudio();
-        }
-        if (audioCtx && !isAudioEnabled) {
-          await audioCtx.resume();
-          isAudioEnabled = true;
-          audioBadge.innerHTML = '🎧 МУЗЫКА АКТИВНА 🎧';
-          audioBadge.style.borderColor = '#ff44ff';
-          // проиграть приветственную мелодию
-          playShortBeep(660, 0.1, 'square', 0.1);
-          playShortBeep(880, 0.15, 'sawtooth', 0.12);
-          setTimeout(() => {
-            if(isAudioEnabled) playShortBeep(523, 0.2, 'triangle', 0.1);
-          }, 100);
-        } else if (isAudioEnabled) {
-          // если выключить
-          isAudioEnabled = false;
-          audioBadge.innerHTML = '🔇 МУЗЫКА ВЫКЛ';
-          audioBadge.style.borderColor = 'gray';
-        } else {
-          await audioCtx?.resume();
-          isAudioEnabled = true;
-          audioBadge.innerHTML = '🎧 МУЗЫКА АКТИВНА 🎧';
-          audioBadge.style.borderColor = '#ff44ff';
-          playShortBeep(880,0.1);
-        }
-      });
-
-      // добавим случайные искры при движении мыши (для вау-эффекта)
-      let lastMove = 0;
-      window.addEventListener('mousemove', (e) => {
-        if (Date.now() - lastMove > 220) {
-          lastMove = Date.now();
-          if (Math.random() > 0.7) {
-            burstConfetti(e.clientX, e.clientY, 0.3);
-            if(isAudioEnabled && Math.random()>0.8) playShortBeep(300+Math.random()*500, 0.05, 'sine', 0.04);
-          }
-        }
-      });
-
-      // также автоматический фоновый ритмичный бас (опционально)
-      let bassInterval = null;
-      function startBackgroundBass() {
-        if(bassInterval) clearInterval(bassInterval);
-        bassInterval = setInterval(() => {
-          if(isAudioEnabled && audioCtx && Math.random() > 0.75) {
-            playShortBeep(80, 0.1, 'sine', 0.05);
-          }
-        }, 800);
-      }
-      startBackgroundBass();
-
-      // при загрузке маленький приветственный конфетти-дождь
-      setTimeout(() => {
-        burstConfetti(width/2, height/2, 1.2);
-        burstConfetti(width/2 - 100, height/3, 0.7);
-      }, 300);
-      setInterval(() => {
-        if(Math.random() > 0.85) {
-          burstConfetti(Math.random() * width, Math.random() * height * 0.6, 0.4);
-        }
-      }, 2800);
-
-      // эффект магии: смена цвета фона через CSS-переменные (анимация безумия)
-      let hue = 0;
-      setInterval(() => {
-        hue = (hue + 2) % 360;
-        document.body.style.background = `radial-gradient(circle at 30% 40%, hsl(${hue}, 90%, 55%), hsl(${hue + 40}, 80%, 15%))`;
-      }, 180);
-    })();
-  </script>
+    // кнопка карты
+    const mapBtn = document.querySelector('.map-preview .hero-btn');
+    if(mapBtn) mapBtn.addEventListener('click', () => alert('🗺 Полная карта с доступными маршрутами, кафе и парками Владимира будет доступна в Telegram-боте. Спросите у организатора!'));
+</script>
 </body>
 </html>
